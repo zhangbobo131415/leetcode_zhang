@@ -31,5 +31,6 @@
 
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
+        pass
         
 

@@ -320,7 +320,7 @@ class Solution:
             while nums[j] == val and j > i:
                 j -= 1
             nums[i], nums[j] = nums[j], nums[i]
-        return i + 1
+        return i 
 
 
 test = Solution()
