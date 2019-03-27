@@ -309,19 +309,142 @@
 #                     return res*mark
 #         return res * mark
 
+# class Solution:
+#     def removeElement(self, nums, val: int) -> int:
+#         i = 0
+#         j = nums.__len__() - 1
+#         while i < j:
+#             while nums[i] != val and i < j:
+#                 i += 1
+#             while nums[j] == val and j > i:
+#                 j -= 1
+#             nums[i], nums[j] = nums[j], nums[i]
+#         return i
 
-class Solution:
-    def removeElement(self, nums, val: int) -> int:
-        i = 0
-        j = nums.__len__() - 1
-        while i < j:
-            while nums[i] != val and i < j:
-                i += 1
-            while nums[j] == val and j > i:
-                j -= 1
-            nums[i], nums[j] = nums[j], nums[i]
-        return i 
+# class Solution:
+#     def search(self, nums, target: int) -> int:
+#         last_index_nums=len(nums)-1
+#         first_indeex_nums=0
+#         mid_index=int((last_index_nums+first_indeex_nums)/2)
+#         while True:
+#             if nums[mid_index]>nums[first_indeex_nums]:
+#                 first_indeex_nums=mid_index
+#                 mid_index=int((last_index_nums+first_indeex_nums)/2)
+#             else:
+#                 last_index_nums=mid_index
+#                 mid_index=int((last_index_nums+first_indeex_nums)/2)
+
+#leetcode 329
+# class Solution:
+#     def longestIncreasingPath(self, matrix) -> int:
+
+#         col_matrix = len(matrix)
+#         if col_matrix == 0:
+#             return 0
+
+#         row_matrix = len(matrix[0])
+#         if row_matrix == 0:
+#             return 0
+#         res_matrix = [[0 for i in range(row_matrix)]
+#                       for j in range(col_matrix)]
+#         res_matrix[0][0] = 1
+#         result=1
+#         #先获得递减子序列
+#         for i in range(1, col_matrix):
+#             if matrix[i][0] < matrix[i - 1][0]:
+#                 res_matrix[i][0] = res_matrix[i - 1][0] + 1
+#             else:
+#                 res_matrix[i][0] = 1
+#         for i in range(1, row_matrix):
+#             if matrix[0][i] < matrix[0][i - 1]:
+#                 res_matrix[0][i] = res_matrix[0][i - 1] + 1
+#             else:
+#                 res_matrix[0][i] = 1
+#         tem1 = tem2 = 0
+#         for i in range(1, col_matrix):
+#             for j in range(1, row_matrix):
+#                 if matrix[i][j] < matrix[i - 1][j]:
+#                     tem1 = res_matrix[i - 1][j] + 1
+#                 if matrix[i][j] < matrix[i][j - 1]:
+#                     tem2 = res_matrix[i][j - 1] + 1
+#                 res_matrix[i][j] = max(tem1, tem2, 1)
+#                 result=max(result,res_matrix[i][j])
+#                 tem1 = tem2 = 0
+
+#         for i in range(1, col_matrix):
+#             if matrix[i][0] > matrix[i - 1][0]:
+#                 res_matrix[i][0] = res_matrix[i - 1][0] + 1
+#             else:
+#                 res_matrix[i][0] = 1
+#         for i in range(1, row_matrix):
+#             if matrix[0][i] > matrix[0][i - 1]:
+#                 res_matrix[0][i] = res_matrix[0][i - 1] + 1
+#             else:
+#                 res_matrix[0][i] = 1
+#         tem1 = tem2 = 0
+#         for i in range(1, col_matrix):
+#             for j in range(1, row_matrix):
+#                 if matrix[i][j] > matrix[i - 1][j]:
+#                     tem1 = res_matrix[i - 1][j] + 1
+#                 if matrix[i][j] > matrix[i][j - 1]:
+#                     tem2 = res_matrix[i][j - 1] + 1
+#                 res_matrix[i][j] = max(tem1, tem2, 1)
+#                 tem1 = tem2 = 0
+#                 result=max(result,res_matrix[i][j])
+
+#         return result
+
+#test = Solution()
 
 
-test = Solution()
-print(test.removeElement([3, 2, 2, 3], 3))
+# class Solution:
+#     def permuteUnique(self, nums):
+#         res = []
+#         tem = []
+#         nums.sort()
+#         res.append(nums.copy())
+#         tem = nums.copy()
+#         tem.sort(reverse=True)
+#         while nums != tem:
+#             self.nextPermutation(nums)
+#             res.append(nums.copy())
+#         print(res)
+
+#     def nextPermutation(self, nums) -> None:
+#         # maxtem = nums.copy()
+#         # maxtem.sort(reverse=True)
+#         # if maxtem == nums:
+#         #     nums.sort()
+#         # else:
+#         for i in range(nums.__len__() - 1, 0, -1):
+#             if nums[i] > nums[i - 1]:
+#                 qianzhuilist = nums[0:i - 1]
+#                 houzhuilist = nums[i - 1:nums.__len__()]
+#                 houzhuilist.sort(reverse=True)
+#                 weizhi = houzhuilist.index(nums[i - 1])
+#                 qianzhuilist.append(houzhuilist.pop(weizhi - 1))
+#                 houzhuilist.sort()
+#                 qianzhuilist.extend(houzhuilist)
+#                 for tem in range(qianzhuilist.__len__()):
+#                     nums[tem] = qianzhuilist[tem]
+#                 break
+
+
+# test = Solution()
+# test.permuteUnique([1, 1, 2])
+
+
+# yingshe_dic={}
+# yingshe_dic[2]=['a','b','c']
+# print(yingshe_dic[2].__len__())
+
+# a=[1,2,3]
+# b=str(a)
+# print(type(b))
+# print(b)
+# m=['1','2']
+# print(m)
+import re
+print(re.match(".*","ab12123"))
+p=[1]
+print(5//2)

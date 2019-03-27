@@ -43,5 +43,20 @@ class Solution:
         :type target: int
         :rtype: bool
         """
+        i = matrix.__len__() - 1
+        if i < 0:
+            return False
+        maxrow = len(matrix[0])
+        j = 0  #从矩阵的左下角开始
+        while i >= 0 and j < maxrow:
+            if matrix[i][j] == target:
+                return True
+            else:
+                if matrix[i][j] < target:
+                    j += 1    #这一列元素均小于target，j自增1即删除第j列
+                else:
+                    i -= 1    #这一行元素均大于target，i自增1即删除第i行
+
+        return False
         
 

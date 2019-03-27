@@ -44,18 +44,20 @@
 #
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        i = matrix.__len__() - 1
-        if i < 0:
+        col=len(matrix)
+        if col==0:
             return False
-        maxrow = len(matrix[0])
-        j = 0  #从矩阵的左下角开始
-        while i >= 0 and j < maxrow:
-            if matrix[i][j] == target:
+        row=len(matrix[0])
+        if row==0:
+            return False
+        for i in range(col):
+            if target<=matrix[i][row-1]:
+                break
+        for j in range(row):
+            if matrix[i][j]==target:
                 return True
-            else:
-                if matrix[i][j] < target:
-                    j += 1    #这一列元素均小于target，j自增1即删除第j列
-                else:
-                    i -= 1    #这一行元素均大于target，i自增1即删除第i行
-
         return False
+
+
+
+        

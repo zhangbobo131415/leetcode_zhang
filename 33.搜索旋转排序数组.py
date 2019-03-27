@@ -35,5 +35,18 @@
 #
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        last_index_nums=len(nums)-1
+        first_indeex_nums=0  
+        mid_index=int((last_index_nums+first_indeex_nums)/2)
+        while True:
+            if nums[mid_index]>=nums[mid_index-1]:
+                first_indeex_nums=mid_index
+                mid_index=int((last_index_nums+first_indeex_nums)/2)
+            else:
+                last_index_nums=mid_index
+                mid_index=int((last_index_nums+first_indeex_nums)/2)
+
+
+
         
 
