@@ -444,7 +444,31 @@
 # print(b)
 # m=['1','2']
 # print(m)
-import re
-print(re.match(".*","ab12123"))
-p=[1]
-print(5//2)
+# import re
+# print(re.match(".*","ab12123"))
+# p=[1]
+# print(5//2)
+
+# import time
+# a=[]
+# b=[]
+# count=10000000
+# for i in range(count):
+#     a.append(i)
+#     b.append(i)
+# start=time.time()
+# for i in range(count):
+#     pass
+# end=time.time()
+# print(end-start)
+# start=time.time()
+# for i in range(count):
+#     a.pop()
+# end=time.time()
+# print(end-start)
+# start=time.time()
+# for i in range(count):
+#     del(b[-1])
+# end=time.time()
+# print(end-start)
+# print(a,b)
