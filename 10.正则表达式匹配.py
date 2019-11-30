@@ -70,38 +70,43 @@
 # 输出: false
 #
 #
+import re
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        #首先把p中以开头的*去掉
-        s_len = len(s)
-        p_len = len(p)
-        if s_len==0:
-            return
-        if p_len==0:
-            return False
-        for tem in range(p_len):
-            if p[tem] != '*':
-                break
-        if tem == 0:
-            pass
+        res = re.match(p, s)
+        if res and res.span()[1] == len(s):
+            return True
         else:
-            p = p[tem:p_len]
-        s_index = p_index = 0
-        while True:
-            if p[p_index] == '.' or p[p_index] == s[s_index]:
-                p_index += 1
-                s_index += 1
-            elif p[p_index] == '*':
-                if p[p_index - 1] == s[s_index]:
-                    s_index += 1
-                elif p[p_index - 1] == '.':
-                    s_index += 1
-                else:
-                    p_index+=1
-            else:
-                p_index+=1
-            if s_index == s_len:
-                return True
-            if p_index == p_len:
-                return False
-                
+            return False
+        #首先把p中以开头的*去掉
+        # s_len = len(s)
+        # p_len = len(p)
+        # if s_len==0:
+        #     return
+        # if p_len==0:
+        #     return False
+        # for tem in range(p_len):
+        #     if p[tem] != '*':
+        #         break
+        # if tem == 0:
+        #     pass
+        # else:
+        #     p = p[tem:p_len]
+        # s_index = p_index = 0
+        # while True:
+        #     if p[p_index] == '.' or p[p_index] == s[s_index]:
+        #         p_index += 1
+        #         s_index += 1
+        #     elif p[p_index] == '*':
+        #         if p[p_index - 1] == s[s_index]:
+        #             s_index += 1
+        #         elif p[p_index - 1] == '.':
+        #             s_index += 1
+        #         else:
+        #             p_index+=1
+        #     else:
+        #         p_index+=1
+        #     if s_index == s_len:
+        #         return True
+        #     if p_index == p_len:
+        #         return False

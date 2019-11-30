@@ -1,6 +1,4 @@
 {
-    "python.autoComplete.addBrackets": true,
     "python.pythonPath": "C:\\Users\\pc_zhangbo\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
-    "git.ignoreLimitWarning": true,
-    "python.formatting.provider": "yapf"
+    "git.ignoreLimitWarning": true
 }

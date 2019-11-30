@@ -396,7 +396,6 @@
 
 #test = Solution()
 
-
 # class Solution:
 #     def permuteUnique(self, nums):
 #         res = []
@@ -429,10 +428,8 @@
 #                     nums[tem] = qianzhuilist[tem]
 #                 break
 
-
 # test = Solution()
 # test.permuteUnique([1, 1, 2])
-
 
 # yingshe_dic={}
 # yingshe_dic[2]=['a','b','c']
@@ -472,3 +469,307 @@
 # end=time.time()
 # print(end-start)
 # print(a,b)
+
+# class person(object):
+#     def __init__(self,x):
+#         self.age=x
+#     def fuckkk(self):
+#         print(self.age)
+
+# def fuck(self,x):
+#     print(self.age<x.age)
+# def __le__(self,x):
+#     return self.age<x.age
+
+# person.fuck=types.MethodType(fuck,person)
+
+# person.num=110
+# test=person(20)
+# test2=person(15)
+# print(test.age,test.num,test2.age,test2.num)
+# test2.num=210
+# print(test.age,test.num,test2.age,test2.num)
+# person.fuck=types.MethodType(fuck,test)
+# test.__le__=types.MethodType(__le__,test)
+# test.__le__=types.MethodType(__le__,test2)
+# print(test>test2)
+
+# import re
+# a=re.match('.*','abgsfdg')
+# b=re.match('a','aa')
+# print(a.span()[1])
+# print(b)
+
+#关键时去寻找一个映射，一个将有相同字母组成的单词映射为同一个值的映射。
+#这里主要是将字符串专为列表，然后进行字典排序，这样具有相同字母组成的字符串就对应同一个列表了
+# class Solution:
+#     def groupAnagrams(self, strs):
+#         strslen = strs.__len__()
+#         res = []
+#         #tem用来存放字典排序后的列表
+#         tem = []
+#         if strslen <= 0:
+#             return []
+#         for i in range(0, strslen):
+#             tem_root = self.str_to_list(strs[i])
+#             tem_root.sort()
+#             #判断当前字符串的字典排序列表是否存在于tem中
+#             if tem_root in tem:
+#                 index_root = tem.index(tem_root)
+#                 res[index_root].append(strs[i])
+#             else:
+#                 #否则tem和res均append一下
+#                 res.append([strs[i]])
+#                 tem.append(tem_root)
+#         print(res)
+#         return res
+
+#     def str_to_list(self, strs):
+#         res = []
+#         for i in range(len(strs)):
+#             res.append(strs[i])
+#         return res
+
+# test = Solution()
+# test.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+
+# class Solution:
+#     def strStr(self, haystack: str, needle: str) -> int:
+#         len_haystack = len(haystack)
+#         len_needle = len(needle)
+#         next = [0 for i in range(len_needle)]
+#         if len_needle == 0:
+#             return 0
+#         for i in range(1, len_needle):
+#             if needle[i] == needle[next[i - 1]]:
+#                 next[i] = next[i - 1] + 1
+#             else:
+#                 temmm=next[i-1]-1
+#                 while temmm:
+#                     if needle[i] == needle[next[temmm]]:
+
+#                         next[i] = next[temmm]+1
+#                         break
+#                     temmm=next[temmm]-1
+
+#         print(next)
+#         next.insert(0,-1)
+#         next.pop()
+#         print(next)
+#         haindex=neindex=0
+#         while haindex<len_haystack:
+#             if haystack[haindex]==needle[neindex]:
+#                 haindex,neindex=haindex+1,neindex+1
+#             else:
+#                 if neindex==0:
+#                     haindex+=1
+#                 else:
+#                     neindex=next[neindex]
+#             if neindex==len_needle:
+#                 return haindex-neindex
+#         return -1
+
+# test = Solution()
+# test.strStr("aabaaabaaac","aabaaac")
+
+# class Solution:
+#     def longestPalindrome(self, s: str) -> str:
+#         lenofs = len(s)
+#         tem_res = [0 for i in self.dingyihanshu(0, lenofs, 0.5)]
+#         mid = [i for i in self.dingyihanshu(0, lenofs, 0.5)]
+#         for j in mid:
+#             if int(j) == j:
+#                 j = int(j)
+#                 for k in range(1, j + 1):
+#                     if j + k <= lenofs - 1 and s[j + k] == s[j - k]:
+#                         tem_res[j * 2] += 2
+#                     else:
+#                         break
+#                 tem_res[j * 2] += 1
+#             else:
+#                 for k in range(int(j), -1, -1):
+#                     if int(j * 2 - k) <= lenofs - 1 and s[k] == s[int(j * 2 -
+#                                                                       k)]:
+#                         tem_res[int(j * 2)] += 2
+#                     else:
+#                         break
+#         print(tem_res)
+#         maxlen = max(tem_res)
+#         index = tem_res.index(maxlen)
+#         if mid[index] == int(mid[index]):
+#             return s[int(mid[index]) - maxlen // 2:int(mid[index]) +
+#                      maxlen // 2 + 1]
+#         else:
+#             return s[int(mid[index]) - maxlen//2 + 1:int(mid[index]) + maxlen//2 + 1]
+
+#     def dingyihanshu(self, start, end, step):
+#         end = end - 1
+#         while start <= end:
+#             yield start
+#             start = start + step
+
+# test = Solution()
+
+# print(test.longestPalindrome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
+
+#leetcode 199 左子树先进队列，判断条件很麻烦，层次遍历取层的最后#一个节点
+# class Solution:
+#     def rightSideView(self, root: TreeNode) -> List[int]:
+#         tem = []
+#         res = []
+#         depth = 0
+#         if root:
+#             tem.append((root, depth))
+#         else:
+#             return res
+#         while tem.__len__() >= 1:
+#             top = tem[0][0]
+#             depth = tem[0][1]
+#             if top.left:
+#                 tem.append((top.left, depth + 1))
+#             if top.right:
+#                 tem.append((top.right, depth + 1))
+#             tem.pop(0)
+#             if tem.__len__() > 0 and depth != tem[0][1]:
+#                 res.append(top.val)
+#         if res.__len__() == 0 or depth != res.__len__() - 1:
+#             res.append(top.val)
+#         return res
+
+#leetcode 199 右子树先进队列写起来果然简单很多
+# class Solution:
+#     def rightSideView(self, root: TreeNode) -> List[int]:
+#         tem = []
+#         res = []
+#         depth = 1
+#         if root:
+#             tem.append((root, depth))
+#         else:
+#             return res
+#         while tem.__len__() >= 1:
+#             top = tem[0][0]
+#             depth = tem[0][1]
+#             if top.right:
+#                 tem.append((top.right, depth + 1))
+#             if top.left:
+#                 tem.append((top.left, depth + 1))
+#             if res.__len__() < depth:
+#                 res.append(top.val)
+#             tem.pop(0)
+#         return res
+
+# leetcode 3
+# class Solution:
+#     def lengthOfLongestSubstring(self, s: str) -> int:
+#         if len(s) == 0:
+#             return 0
+#         fuzhu_dic = {s[0]:0}
+#         changdu = [1]
+#         for i in range(1, len(s)):
+#             if s[i] not in fuzhu_dic:
+#                 fuzhu_dic[s[i]] = i
+#                 changdu.append(changdu[i-1]+1)
+#             else:
+#                 end_weizhi = fuzhu_dic[s[i]]
+#                 start_weizhi = i - changdu[-1]
+#                 changdu.append(i - end_weizhi)
+#                 fuzhu_dic[s[i]] = i
+#                 for tem in range(start_weizhi, end_weizhi):
+#                     fuzhu_dic.pop(s[tem])
+#         return max(changdu)
+
+# class mytest:
+#     def __init__(self):
+#         self.x = 25
+
+#     def __iter__(self):
+#         print("mydata")
+#         return self.x
+
+# from collections import Iterable
+
+# test = mytest()
+# hehee = [1, 2, 3]
+# print(sum(test))
+if __name__ == "__main__":
+
+    import time
+
+
+    def time_cost(func):
+        def warrper(x):
+            print(func.__name__, "is runing")
+            start = time.time()
+            func(x)
+            end = time.time()
+            print(end - start)
+        return warrper
+
+    @time_cost
+    def chuyi2(x):
+        for i in range(x):
+            i // 2
+        return
+
+    @time_cost
+    def weiyunxuan(x):
+
+        for i in range(x):
+            i & 1
+        return
+
+    @time_cost
+    def testtt(x):
+        print(x)
+
+    # 结果出错
+    # testtt(500)
+    # chuyi2(1000000)
+    # weiyunxuan(1000000)
+
+
+    #vscode 输出结果
+    # testtt is runing
+    # 500
+    # 0.0070743560791015625
+    # chuyi2 is runing
+
+    #pycharm输出结果：
+    # testtt is runing
+    # 500
+    # 0.0
+    # chuyi2 is runing
+    # 0.10937356948852539
+    # weiyunxuan is runing
+    # 0.10937738418579102
+    class Solution:
+        def longestConsecutive(self, nums) -> int:
+            tem_dict = dict()
+            res=[ 0 for i in range(nums.__len__())]
+            if res.__len__()==0:
+                return 0
+            for j in nums:
+                tem_dict[j] = j + 1
+            for (i, j) in enumerate(nums):
+                while j in tem_dict:
+                    res[i]+=1
+                    j = j + 1
+            print( max(res))
+
+    # test1 = Solution()
+    # data = [x for x in range(-999,9001)]
+
+    # test1.longestConsecutive(data)
+
+    # class KthLargest:
+    #     def __init__(self, k: int, nums: List[int]):
+    #         self.k = k
+    #         self.nums = nums.copy()
+    #     def add(self, val: int) -> int:
+    #         pass
+    you_kuohao = dict(zip([')', ']', '}'],['(', '[', '{']))
+    print(you_kuohao)
+    
+   
+
+    
